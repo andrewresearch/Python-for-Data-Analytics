@@ -16,7 +16,7 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[12pt,oneside]{book}
+\LoadClass[14pt,oneside]{book}
 
 %% Main packages in the document
 \RequirePackage{parskip}    % Space between paras, no indents

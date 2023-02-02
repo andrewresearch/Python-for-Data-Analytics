@@ -1,5 +1,5 @@
 # Ignoring all log files and output
-
+out/**
 *.aux
 *.log
 *.gz
