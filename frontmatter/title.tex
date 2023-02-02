@@ -1,0 +1,66 @@
+\begin{titlepage}
+
+\begin{center}
+\bigskip
+\bigskip
+
+%% Print the title
+{\makeatletter
+\color{qut-blue}\largetitlestyle\fontsize{28}{28}\selectfont\@title
+\makeatother}
+
+\bigskip
+\bigskip
+
+%% Print the subtitle
+{\makeatletter
+\ifdefvoid{\@subtitle}{}{\color{qut-navy}\titlestyle\fontsize{15}{15}\selectfont\@subtitle}
+\makeatother}
+
+\bigskip
+
+{\makeatletter
+\ifdefvoid{\@reportdate}{}{\color{qut-navy}\titlestyle\fontsize{14}{14}\selectfont\@reportdate}
+\makeatother}
+
+
+\vfill
+
+\color{qut-cyan}{\textbf{This research was funded by \\ ???.}}\color{qut-black}
+
+\bigskip
+
+
+\begin{em}
+\small
+The QUT research team gratefully acknowledge \ldots
+\end{em}
+
+
+\vspace{1cm}
+
+\begin{framed}
+\raggedright
+Cite as: \\
+%
+\bigskip
+%
+Authors. (2022). \textit{Title. Final report prepared for ???} Queensland University of Technology: Brisbane, QLD.
+
+\end{framed}
+
+
+\vspace{1cm}
+
+\end{center}
+
+
+\vspace{1cm}
+\begin{tikzpicture}[remember picture, overlay]
+    \node at (current page.south)[anchor=south,inner sep=1cm]{
+        \includegraphics[scale=0.5]{layout/qut/QUTlogo–Blue–CMYK.eps}
+    };
+\end{tikzpicture}
+
+
+\end{titlepage}
