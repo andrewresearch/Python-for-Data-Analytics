@@ -32,11 +32,11 @@ If the writing in this section didn't require any order to the words, it is like
 
 In general, programming languages have very specific requirements, and python is no exception. In the following example, only the first line of code will display \textbf{Hello!} in the output. The other 2 examples will result in errors. This is because only the first line is the \textit{correct} syntax. Note that the words following the hash symbol (\#) are comments and don't impact the running of the code in any way.
 
-\begin{minted}{python}
+\begin{pycode}
     print('Hello!') # will work
     print['Hello!'] # won't work - will produce an error
     print(Hello!) # won't work - will produce an error
-\end{minted}
+\end{pycode}
 
 However, you might find that some things in the language don't matter. For example, with Python it really doesn't matter if you use single quotes or double quotes for a string.
 
@@ -44,18 +44,18 @@ However, you might find that some things in the language don't matter. For examp
 
 One very important syntactic feature of python, is the use of indents in the code to tell the computer which lines of code are \textit{nested} inside an incapsulating element.
 
-\begin{minted}{python}
+\begin{pycode}
     def my_function():
-        print("This line of code is inside the function")
+    print("This line of code is inside the function")
 
     print("This line of code is outside the function")
 
     dogs = ["Golden retriever","Australian Shepherd","Blue Heeler"] # A list of dogs
     for dog in dogs: # This is a loop that loops over the list of dogs
-        print("dog:",dog) # This is inside the loop
+    print("dog:",dog) # This is inside the loop
 
     print("dogs") # This line is outside the loop
-\end{minted}
+\end{pycode}
 
 
 
@@ -69,7 +69,7 @@ Writing code involves some commen concepts no matter which language you are usin
 
 \textbf{Variables} allow us to assign data to a name. For example, I could assign the string of characters ``Charles'' to the variable \code{first\_name}, and the string ``Peirce'' to the variable \code{last\_name}. The advantage of doing this is that I can then operate on the variables (by name) without knowing what data is actually stored in them. For example:
 
-\begin{minted}{python}
+\begin{pycode}
     first_name = "Charles"
     last_name = "Peirce"
     #operate on the variables
@@ -78,7 +78,7 @@ Writing code involves some commen concepts no matter which language you are usin
     print(full_name)
 
     # Charles Peirce
-\end{minted}
+\end{pycode}
 
 When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Peirce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full\_name} was passed to the function \code{print()}.
 
@@ -86,12 +86,16 @@ When the string is \textit{assigned} to the variable name, the name is \textit{d
 
 A \textbf{function} is simply a group of lines of code that accept data as input and return data as output. Functions are useful for repeating the same tasks repeatedly on different data. In python, the \code{def} keyword is used to define a function. The actual code that does the work is indented For example, the following code defines a function \code{make\_full\_name()}:
 
-\begin{minted}{python}
+\begin{pycode}
     def make_full_name(fname,lname):
-        return fname + " " + lname
-\end{minted}
+    return fname + " " + lname
+\end{pycode}
 
 \subsection{Objects with properties and methods}
 
-\section{A little more advanced\ldots}
+\begin{pycode}
+    print("Test")
+\end{pycode}
+
+%\section{A little more advanced\ldots}
 
