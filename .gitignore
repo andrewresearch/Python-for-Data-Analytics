@@ -1,4 +1,5 @@
 # Ignoring all log files and output
+output/**
 out/**
 *.aux
 *.log

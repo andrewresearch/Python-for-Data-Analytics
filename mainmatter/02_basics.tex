@@ -3,28 +3,93 @@
 
 \section{How to think}
 
-Thinking like an analyst. Thinking like a programmer.
+Data analytics involves 2 kinds of thinking: thinking like an analyst, and thinking like a programmer. These involve very different thought processes, and if you are aware of them it can make it easier to solve programming problems while addressing larger analytical questions.
+
+When thinking like an analyst, questions based in the context are common. For example:
+
+\begin{itemize}
+    \item What is the main concern of the organisation that this analysis will address?
+    \item How should insights of this analysis be presented to the decision-makers?
+    \item What context is important for this analysis?
+\end{itemize}
+
+The kinds of questions are high level and inform decisions about what kind of data, analysis, and visualisation is required, but may not inform decisions about how to implement the analysis.
+
+In contrast, when thinking like a programmer, questions about the code itself are more important. For example:
+\begin{itemize}
+    \item Which is the best structure for this data?
+    \item What function is best to manimpulate this data to achieve the required result?
+    \item What syntax is required for this section of code?
+    \item How can I break this task into smaller steps?
+\end{itemize}
+
+It is this last question in particular that newcommers find challenging. There is often an expectation to obtain a result by undertaking a simple action. But programming always involves taking tasks and breaking them up into small steps, ensuring that each step achieves the expected result.
+How small you have to break down the task usually depends on the degree to which others have simplified the task previously -- and already written code to do the job. Although almost all data analytics with Python makes use of code written by others (to simplify the analysis task), there will always be a need to think programmatically about the code. (Or at least until AI is writing high qualility code for us).
 
 \section{How to write}
 
-Language. Syntax. Structure.
+If the writing in this section didn't require any order to the words, it is likely that you wouldn't understand it. We understand a language through a knowledge of the words (the vocabulary), as well as rules for how those words are put together (syntax). The same applies for programming langauges. There are certain concepts that are common across many languages (e.g. variables, loops, conditionals, data structures), but the vocabulary and the syntax tends to be language specific. It is critical to gain an understanding of both the terms important to the language \textit{AND} the syntax required to use those terms.
 
-% \begin{minted}[frame=lines,framesep=2mm,baselinestretch=1.2,
-% bgcolor=gray!10,fontsize=\footnotesize,linenos]{python}
-% print("Hello.")
-% \end{minted}
+In general, programming languages have very specific requirements, and python is no exception. In the following example, only the first line of code will display \textbf{Hello!} in the output. The other 2 examples will result in errors. This is because only the first line is the \textit{correct} syntax. Note that the words following the hash symbol (\#) are comments and don't impact the running of the code in any way.
+
+\begin{minted}{python}
+    print('Hello!') # will work
+    print['Hello!'] # won't work - will produce an error
+    print(Hello!) # won't work - will produce an error
+\end{minted}
+
+However, you might find that some things in the language don't matter. For example, with Python it really doesn't matter if you use single quotes or double quotes for a string.
+
+\subsection{Nesting and indenting}
+
+One very important syntactic feature of python, is the use of indents in the code to tell the computer which lines of code are \textit{nested} inside an incapsulating element.
+
+\begin{minted}{python}
+    def my_function():
+        print("This line of code is inside the function")
+
+    print("This line of code is outside the function")
+
+    dogs = ["Golden retriever","Australian Shepherd","Blue Heeler"] # A list of dogs
+    for dog in dogs: # This is a loop that loops over the list of dogs
+        print("dog:",dog) # This is inside the loop
+
+    print("dogs") # This line is outside the loop
+\end{minted}
+
+
+
+
 
 \section{Common concepts}
 
-Certain ideas that are found everywhere.
+Writing code involves some commen concepts no matter which language you are using. Understanding these concepts will help you grasp the language faster, and it will also help you know what to search for if you are looking for help online.
 
 \subsection{Variables and assignment}
 
-Defining, assigning, referencing, passing
+\textbf{Variables} allow us to assign data to a name. For example, I could assign the string of characters ``Charles'' to the variable \code{first\_name}, and the string ``Peirce'' to the variable \code{last\_name}. The advantage of doing this is that I can then operate on the variables (by name) without knowing what data is actually stored in them. For example:
+
+\begin{minted}{python}
+    first_name = "Charles"
+    last_name = "Peirce"
+    #operate on the variables
+    full_name = first_name + " " + last_name
+    #display the results
+    print(full_name)
+
+    # Charles Peirce
+\end{minted}
+
+When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Peirce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full\_name} was passed to the function \code{print()}.
 
 \subsection{Functions}
 
-Defining, calling and passing
+A \textbf{function} is simply a group of lines of code that accept data as input and return data as output. Functions are useful for repeating the same tasks repeatedly on different data. In python, the \code{def} keyword is used to define a function. The actual code that does the work is indented For example, the following code defines a function \code{make\_full\_name()}:
+
+\begin{minted}{python}
+    def make_full_name(fname,lname):
+        return fname + " " + lname
+\end{minted}
 
 \subsection{Objects with properties and methods}
 

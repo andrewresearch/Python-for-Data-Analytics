@@ -279,24 +279,24 @@
     % \node[above right=0.2cm and 0.6cm] at (current page.south west) {%
     %     \includegraphics[width=0.35\linewidth]{layout/qut/logo-white.pdf}};
 
-    \node[below=1.5cm,fill=qut-white,minimum width={\paperwidth},inner ysep=25pt,opacity=0.95,text opacity=1] at (current page.north) {%
-        \begin{minipage}{0.9\paperwidth}
-            \largetitlestyle\fontsize{36}{36}\selectfont\color{qut-navy}\@title \\[0.5ex]
-            \ifdefvoid{\@subtitle}{}{\titlestyle\fontsize{20}{20}\selectfont\color{qut-navy}\@subtitle \\[2.5ex]}
-            \ifdefvoid{\@author}{}{\titlestyle\fontsize{18}{18}\selectfont\color{qut-navy}\@author \\[2.5ex]}
-            % \ifdefvoid{\@subject}{}{\titlestyle\fontsize{22}{22}\selectfont\color{white}\@subject \\[0.5ex]}
-            % \largetitlestyle\fontsize{24}{24}\selectfont\color{white}\@author
-        \end{minipage}};
-        
-        \node[above=2.5cm,minimum width={0.05\paperwidth},text opacity=1, anchor=east] at (current page.south) {%
-        \begin{flushleft}
-        \begin{minipage}{0.45\paperwidth}
-        \raggedright
-        %\color{qut-cyan}\fontsize{14}{14}\textbf{\@author} \\
-            \largetitlestyle\fontsize{12}{12}\selectfont\color{white}\@reportdate
-        \end{minipage}
-        \end{flushleft}
-        };
+    % \node[below=1.5cm,fill=qut-white,minimum width={\paperwidth},inner ysep=25pt,opacity=0.95,text opacity=1] at (current page.north) {%
+    %     \begin{minipage}{0.9\paperwidth}
+    %         \largetitlestyle\fontsize{36}{36}\selectfont\color{qut-navy}\@title \\[0.5ex]
+    %         \ifdefvoid{\@subtitle}{}{\titlestyle\fontsize{20}{20}\selectfont\color{qut-navy}\@subtitle \\[2.5ex]}
+    %         \ifdefvoid{\@author}{}{\titlestyle\fontsize{18}{18}\selectfont\color{qut-navy}\@author \\[2.5ex]}
+    %         % \ifdefvoid{\@subject}{}{\titlestyle\fontsize{22}{22}\selectfont\color{white}\@subject \\[0.5ex]}
+    %         % \largetitlestyle\fontsize{24}{24}\selectfont\color{white}\@author
+    %     \end{minipage}};
+
+    %     \node[above=2.5cm,minimum width={0.05\paperwidth},text opacity=1, anchor=east] at (current page.south) {%
+    %     \begin{flushleft}
+    %     \begin{minipage}{0.45\paperwidth}
+    %     \raggedright
+    %     %\color{qut-cyan}\fontsize{14}{14}\textbf{\@author} \\
+    %         \largetitlestyle\fontsize{12}{12}\selectfont\color{white}\@reportdate
+    %     \end{minipage}
+    %     \end{flushleft}
+    %     };
 
     \end{tikzpicture}
     \newpage
