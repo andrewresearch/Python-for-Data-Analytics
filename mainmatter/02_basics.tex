@@ -46,19 +46,16 @@ One very important syntactic feature of python, is the use of indents in the cod
 
 \begin{pycode}
     def my_function():
-    print("This line of code is inside the function")
+        print("This line of code is inside the function")
 
     print("This line of code is outside the function")
 
     dogs = ["Golden retriever","Australian Shepherd","Blue Heeler"] # A list of dogs
     for dog in dogs: # This is a loop that loops over the list of dogs
-    print("dog:",dog) # This is inside the loop
+        print("dog:",dog) # This is inside the loop
 
     print("dogs") # This line is outside the loop
 \end{pycode}
-
-
-
 
 
 \section{Common concepts}
@@ -72,12 +69,8 @@ Writing code involves some commen concepts no matter which language you are usin
 \begin{pycode}
     first_name = "Charles"
     last_name = "Peirce"
-    #operate on the variables
-    full_name = first_name + " " + last_name
-    #display the results
-    print(full_name)
-
-    # Charles Peirce
+    full_name = first_name + " " + last_name # use the variables and assign to new variable
+    print(full_name) # displays  Charles Peirce
 \end{pycode}
 
 When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Peirce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full\_name} was passed to the function \code{print()}.
@@ -88,14 +81,66 @@ A \textbf{function} is simply a group of lines of code that accept data as input
 
 \begin{pycode}
     def make_full_name(fname,lname):
-    return fname + " " + lname
+        fullname =  fname + " " + lname
+        return fullname
 \end{pycode}
 
-\subsection{Objects with properties and methods}
+This function is \textit{called} by its name and \textit{passing} the required parameters between the parenthesis. For example, \code{make\_full\_name("Charles","Peirce")} would result in \code{"Charles Peirce"}.
+
+\section{A little more advanced\ldots}
+
+\subsection{Classes with properties and methods}
+
+While functions can be created and called standalone, they can also be included in \textbf{classes}. Without going into technical details, an class can have properties and methods where the methods are functions that usually operate on properties. When classes are \textit{instantiated} we call the instance an \textbf{object}. For example, the \textit{object} \code{soccer\_ball} could be an \textit{instance} of the \textit{class} \code{ball}. Using our names example above, if we had a \code{Person} class, it may have a \code{first\_name} property, a \code{last\_name} property, and a \code{full\_name()} method. We could create :
 
 \begin{pycode}
-    print("Test")
+    # Define a class Person with properties first_name and last_name
+    # and a full_name method
+    class Person:
+        def __init__(self, fname, lname):
+            self.first_name = fname
+            self.last_name = lname
+
+        def full_name(self):
+            return self.fname + " " + self.lname
+
+    # Create an object (instance of the Person class)
+    cp = Person("Charles", "Peirce")
+
+    # Get the full name for cp, by calling the full_name() method
+    print(cp.full_name()) # displays: Charles Peirce
 \end{pycode}
 
-%\section{A little more advanced\ldots}
+In data analytics there is rarely a need to create custom classes. However, it is usefull to know that you may be creating and using objects and their methods. For example:
 
+\begin{pycode}
+    # Create a string object
+    my_string = "This is a string of characters"
+    # Call the string object's split() method
+    split_string = my_string.split('_')
+    print(split_string) 
+    # Displays a  list: ['This','is','a','string','of','characters']
+\end{pycode}
+
+\subsection{Libraries or Packages}
+
+Repeated code (objects and functions) that are related can be grouped together into a reuseable bundle called a \textbf{Library} or \textbf{Package}. This helps minimise duplication.
+
+In data analytics it is very common to use \textit{libraries} written by other programmers. Once libraries are installed, they can be \textit{imported} into the current Python file and used by the code in that file. Libraries can be imported and used directly, imported as an alias, or components of a library can be imported. For example:
+
+\begin{pycode}
+    # Import the mathematics library
+    import math
+    # Use the library's log function by directly referring to the library
+    print(math.log(100)) # displays 2
+
+    # Import a function of the mathematics library
+    from math import sqrt
+    # Use the imported function
+    print(sqrt(100)) # displays 10
+
+    # Import a library as an alias
+    import Pandas as pd
+    # Create a DataFrame object and assign to variable df
+    df = pd.DataFrame()
+\end{pycode}
