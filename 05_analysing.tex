@@ -1,0 +1,84 @@
+\chapter{Analysing}
+\label{chapter:analysing}
+
+\section{Counting categorical data}
+
+\begin{pycode}
+    import pandas as pd
+    data = {"pet":['dog','cat','cat','dog','dog','dog'],
+            "colour":["black","brown","black","brown","black","brown"],
+            "count":[3,1,4,2,1,2]}
+    df = pd.DataFrame(data)
+    df
+\end{pycode}
+
+\begin{tabular}{l l l l}
+     & pet  &  colour & count \\
+    \hline
+    0&	dog&	    black	 &   3\\
+    1&	cat&	    brown	 &   1\\
+    2&	cat&	    black	 &   4\\
+    3&	dog&	    brown	 &   2\\
+    4&	dog&	    black	 &   1\\
+    5&	dog&	    brown	  &  2\\
+\end{tabular}
+
+Count the number of `dog' and `cat' entries in the `pet' column:
+
+\begin{pycode}
+    result = df.groupby(['pet']).size()
+    print(result)
+\end{pycode}
+
+\begin{verbatim}
+    pet
+    cat    2
+    dog    4
+    dtype: int64
+\end{verbatim}
+
+Get a total number of dogs and cats by using \code{sum()} on the `count' column:
+
+\begin{pycode}
+    result = df.groupby(['pet'])['count'].sum()
+    print(result)
+\end{pycode}
+
+\begin{verbatim}
+    pet
+    cat    5
+    dog    8
+    Name: count, dtype: int64
+\end{verbatim}
+
+
+\newpage
+
+Get totals based on categories and subcategories:
+
+\begin{pycode}
+    result = df.groupby(['pet','colour']).sum()
+    print(result)
+\end{pycode}
+
+\begin{verbatim}
+    pet colour  count
+    cat black       4
+        brown       1
+    dog black       4
+        brown       4
+\end{verbatim}
+
+Get a total number of coloured pets and format as a dataframe:
+
+\begin{pycode}
+    new_df = df.groupby(['colour'])['count'].sum().reset_index(name="count")
+    new_df
+\end{pycode}
+
+\begin{tabular}{l l l}
+    &colour	&count \\
+    \hline
+    0	&black	&8 \\
+    1	&brown	&5\\
+\end{tabular}

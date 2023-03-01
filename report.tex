@@ -53,8 +53,8 @@
   numberblanklines=false,
   samepage=true
 }
-
-\newcommand{\code}[1]{\colorbox{gray!15}{\texttt{#1}}}
+\usepackage{fancyvrb}
+\newcommand{\code}[1]{\colorbox{gray!15}{\texttt{\Verb!#1!}}}
 
 %% Additional commands
 \renewcommand{\deg}{\si{\degree}\xspace}
@@ -99,19 +99,19 @@
 
 %\input{mainmatter/01_exec_summary}
 
-\input{mainmatter/01_introduction.tex}
+\input{01_introduction.tex}
 
-\input{mainmatter/02_basics.tex}
+\input{02_basics.tex}
 
-\input{mainmatter/03_reading.tex}
+\input{03_reading.tex}
 
-\input{mainmatter/04_cleaning.tex}
+\input{04_cleaning.tex}
 
-\input{mainmatter/05_analysing.tex}
+\input{05_analysing.tex}
 
-\input{mainmatter/06_visualising.tex}
+\input{06_visualising.tex}
 
-\input{mainmatter/07_sharing.tex}
+\input{07_sharing.tex}
 
 
 %% Prevent urls running into margins in bibliography

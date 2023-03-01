@@ -64,7 +64,7 @@ Writing code involves some commen concepts no matter which language you are usin
 
 \subsection{Variables and assignment}
 
-\textbf{Variables} allow us to assign data to a name. For example, I could assign the string of characters ``Charles'' to the variable \code{first\_name}, and the string ``Peirce'' to the variable \code{last\_name}. The advantage of doing this is that I can then operate on the variables (by name) without knowing what data is actually stored in them. For example:
+\textbf{Variables} allow us to assign data to a name. For example, I could assign the string of characters ``Charles'' to the variable \code{first_name}, and the string ``Peirce'' to the variable \code{last_name}. The advantage of doing this is that I can then operate on the variables (by name) without knowing what data is actually stored in them. For example:
 
 \begin{pycode}
     first_name = "Charles"
@@ -73,11 +73,11 @@ Writing code involves some commen concepts no matter which language you are usin
     print(full_name) # displays  Charles Peirce
 \end{pycode}
 
-When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Peirce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full\_name} was passed to the function \code{print()}.
+When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Peirce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full_name} was passed to the function \code{print()}.
 
 \subsection{Functions}
 
-A \textbf{function} is simply a group of lines of code that accept data as input and return data as output. Functions are useful for repeating the same tasks repeatedly on different data. In python, the \code{def} keyword is used to define a function. The actual code that does the work is indented For example, the following code defines a function \code{make\_full\_name()}:
+A \textbf{function} is simply a group of lines of code that accept data as input and return data as output. Functions are useful for repeating the same tasks repeatedly on different data. In python, the \code{def} keyword is used to define a function. The actual code that does the work is indented For example, the following code defines a function \code{make_full_name()}:
 
 \begin{pycode}
     def make_full_name(fname,lname):
@@ -85,13 +85,13 @@ A \textbf{function} is simply a group of lines of code that accept data as input
         return fullname
 \end{pycode}
 
-This function is \textit{called} by its name and \textit{passing} the required parameters between the parenthesis. For example, \code{make\_full\_name("Charles","Peirce")} would result in \code{"Charles Peirce"}.
+This function is \textit{called} by its name and \textit{passing} the required parameters between the parenthesis. For example, \code{make_full_name("Charles","Peirce")} would result in \code{"Charles Peirce"}.
 
 \section{A little more advanced\ldots}
 
 \subsection{Classes with properties and methods}
 
-While functions can be created and called standalone, they can also be included in \textbf{classes}. Without going into technical details, an class can have properties and methods where the methods are functions that usually operate on properties. When classes are \textit{instantiated} we call the instance an \textbf{object}. For example, the \textit{object} \code{soccer\_ball} could be an \textit{instance} of the \textit{class} \code{ball}. Using our names example above, if we had a \code{Person} class, it may have a \code{first\_name} property, a \code{last\_name} property, and a \code{full\_name()} method. We could create :
+While functions can be created and called standalone, they can also be included in \textbf{classes}. Without going into technical details, an class can have properties and methods where the methods are functions that usually operate on properties. When classes are \textit{instantiated} we call the instance an \textbf{object}. For example, the \textit{object} \code{soccer_ball} could be an \textit{instance} of the \textit{class} \code{ball}. Using our names example above, if we had a \code{Person} class, it may have a \code{first_name} property, a \code{last_name} property, and a \code{full_name()} method. We could create :
 
 \begin{pycode}
     # Define a class Person with properties first_name and last_name
