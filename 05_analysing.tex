@@ -82,3 +82,165 @@ Get a total number of coloured pets and format as a dataframe:
     0	&black	&8 \\
     1	&brown	&5\\
 \end{tabular}
+
+\section{Accessing data within a dicts and lists}
+
+When semi-structured data saved in \code{JSON} format is read into a Python, a combination of \code{dict} and \code{list} types is used to store the data. When analysing data in this format, it is necessary to \textit{traverse} the structure to access nested data. This involves a combination of (1) accessing values via their keys, and (2) iterating over lists.
+
+\subsection{Accessing values via their keys}
+
+It is common for json data to be nested. For example, in the data below, the person's birth year is found in a dict with a key `dates' inside another dict with a key `details' which is inside another dict.
+
+\begin{verbatim}
+    {
+        "person_id": 1,
+        "name": "Charles Peirce",
+        "details": {
+            "occupation":"Philosopher",
+            "dates": {
+                "born": 1839
+                "died": 1914
+            }
+        }
+    }
+\end{verbatim}
+
+Data in a dict is accessed via its \code{key}. If the data above was loaded into a variable called \code{peirce}, the \code{person_id} value could be retrieved as follows:
+
+\begin{pycode}
+    # A dict variable called peirce for the peirce record
+    peirce = {
+        "person_id": 1,
+        "name": "Charles Peirce",
+        "details": {
+            "occupation":"Philosopher",
+            "dates": {
+                "born": 1839
+                "died": 1914
+            }
+        }
+    }
+
+    # Get the person_id for peirce record
+    peirce_id = peirce['person_id']
+
+    # Get the name for the peirce record
+\end{pycode}
+
+To access data deeper in the structure, the keys can be chained\dots
+
+\begin{pycode}
+    # Chain keys to get nested data
+    peirce_occupation = peirce['details']['occupation']
+
+    # Go as deep as the structure allows
+    peirce_born = peirce['details']['dates']['born']
+\end{pycode}
+
+Dicts can be very large, and often difficult to read. It can be helpful to identify what the keys are at various levels of the dict. This can be done using the \code{keys()} function.
+
+\begin{pycode}
+    print(peirce.keys())
+    # displays: ['person_id','name','details']
+\end{pycode}
+
+\subsection{Iterating over a list}
+
+When the data includes a \code{list}, it may be necessary to \textit{iterate} over the list to access individual values. This is done using a \code{for in} loop.
+
+\begin{pycode}
+    # A list of pragmatic philosophers
+    pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
+
+    for philosopher in pragmatists:
+        print("Pragmatist:",philosopher)
+
+    # displays:
+    # Pragmatist: Charles Sanders Peirce
+    # Pragmatist: William James
+    # Pragmatist: John Dewey
+\end{pycode}
+
+When iterating over a loop, it is also possible to get the index of the item in the list. This is done by using the \code{enumerate function}.
+
+\begin{pycode}
+    # A list of pragmatic philosophers
+    pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
+
+    for idx,philosopher in enumerate(pragmatists):
+        print(f"Pragmatist {idx}:",philosopher)
+
+    # displays:
+    # Pragmatist 0: Charles Sanders Peirce
+    # Pragmatist 1: William James
+    # Pragmatist 2: John Dewey
+\end{pycode}
+
+\subsection{Accessing values of a list}
+
+To access a specific value of a list, the \code{index} (position) of that value in the list can be used. Note that indexes in Python start with \code{0}.
+
+\begin{pycode}
+    pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
+
+    # Get james via index 
+    james = pragmatists[1]
+
+    print(james) #displays: William James
+\end{pycode}
+
+\subsection{Combining dicts and lists}
+
+Often, a combination of techniques will need to be used to access data:
+
+\begin{pycode}
+    #A list of dicts:
+    pragmatists = [{"name":"Charles"},{"name":"William"},{"name":"John"}]
+
+    #Iterate over the list and get value via key
+    for person in pragmatists:
+        person_name = person['name']
+        print(person_name)
+
+    # Displays:
+    # Charles
+    # William
+    # John
+\end{pycode}
+
+\begin{pycode}
+    # A dict with lists
+    philosophers = {
+        "pragmatism":["Peirce","James","Dewey"],
+        "idealism":["Plato","Kant","Hegel"]
+    }
+
+    # iterate over idealists
+    for idealist in philosophers['idealism']:
+        print(idealist)
+
+    # displays
+    # Plato
+    # Kant
+    # Hegel
+
+\end{pycode}
+
+\begin{pycode}
+    # iterate over the whole structure
+    for school in philosophers.keys():
+        print("Philosophical School:": school)
+        names = philosophers[school]
+        for name in names:
+            print("> Philosopher:",name)
+
+    # Displays:
+    # Philosophical School: pragmatism
+    # > Philosopher: Peirce
+    # > Philosopher: James
+    # > Philosopher: Dewey
+    # Philosophical School: idealism
+    # > Philosopher: Plato
+    # > Philosopher: Kant
+    # > Philosopher: Hegel
+\end{pycode}

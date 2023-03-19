@@ -1,4 +1,77 @@
 \chapter{Sharing}
 \label{chapter:sharing}
 
-%\section{a section}
+The most common approach to sharing data is to write it to a file. In many instances, writing data to a file is very similar to reading data from a file (see chapter \ref{chapter:reading}).
+
+\section{Sharing structured data}
+
+\subsection{Writing a datafrmae to a CSV file}
+
+The \code{pandas} library provides a function for writing (saving) CSV files directly from a dataframe to a file. Each of the following examples requires the library, so the following \code{import} needs to be included prior to any of these examples.
+
+\begin{pycode}
+    import pandas as pd
+\end{pycode}
+
+The simplest \code{pandas.to_csv()} function writes a dataframe to a file including the columns and index.
+
+\begin{pycode}
+    # Write a dataframe to a CSV file
+    file_path = "data/"
+    file_name = "my_data.csv"
+    df.to_csv(f"{file_path}{file_name}")
+\end{pycode}
+
+To check the file has written corrected, open the file and look at its contents. You can also verify by reading the file into a new dataframe and comparing the results\dots
+
+\begin{pycode}
+    check_df = pd.read_csv(f"{path}/{file_name}")
+\end{pycode}
+
+\subsection{Writing a dataframe to an Excel file}
+
+Pandas can write dataframes to other formats, such as excel \code{.to_excel()}. Ensure that the file extension is set correctly. Pandas uses the newer \code{.xlsx} format, not the older \code{.xls} format.
+
+\begin{pycode}
+    # Make sure the file extension .xlsx matches the save format
+    # The old excel format of .xls does not work with the current version of pandas!
+    file_path = "data/"
+    excel_file = "my_data.xlsx" # <---- note .xlsx
+    df.to_excel(f"{file_path}/{excel_file}")
+\end{pycode}
+
+It is sensible to check the file by opening in Excel to ensure that it has been saved correctly.
+
+Options include specifying the sheet name as well as whether to write the index. Other options can be found in the documentation.
+
+\begin{pycode}
+    file_path = "data/"
+    excel_file = "my_data.xlsx"
+    df.to_excel(f"{file_path}/{excel_file}",sheet_name = "my_sheet",index=False)
+\end{pycode}
+
+\section{Sharing semi-structured data}
+
+\subsection{Writing json files}
+
+\begin{pycode}
+    # The json library is necessary
+    import json
+
+    # Start with a dict or list of dicts
+    philosophers = {
+        "pragmatism":["Peirce","James","Dewey"],
+        "idealism":["Plato","Kant","Hegel"]
+    }
+
+    # dump the dict to a json string
+    json_string = json.dumps(philosophers)
+
+    # write the string to a file
+    file_path = "data/"
+    file_name = "philosophers.json"
+
+    with open(f"{file_path}{file_name}",'w') as fp:
+        fp.write(json_string)
+
+\end{pycode}

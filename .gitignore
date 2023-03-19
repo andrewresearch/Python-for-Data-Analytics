@@ -18,3 +18,8 @@ out/**
 report.pdf
 
 layout/qut/*
+.DS_Store
+minted.tex
+papers_latex.code-workspace
+python-exemplars.pdf
+python-exemplars.pyg

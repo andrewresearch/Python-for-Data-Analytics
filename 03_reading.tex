@@ -11,6 +11,8 @@ When working with structed data, one of the most common file types is the *CSV* 
     r2c1,r2,c2,r2c3
 \end{verbatim}
 
+\subsection{Reading CSV data from a file}
+
 The \code{pandas} library provides a function for reading CSV files directly into a dataframe.
 Each of the following examples requires the library, so the following \code{import} needs to be included prior to any of these examples.
 
@@ -39,7 +41,7 @@ If the first column of the data can be used as an index (each row is unique valu
 \end{pycode}
 
 \newpage
-If there is no header row in the data, then one can be supplied.
+If there is no header row in the data, then one can be supplied with the \code{name} parameter.
 
 \begin{pycode}
     # Read a CSV without header into a dataframe and supply column names
@@ -49,4 +51,143 @@ If there is no header row in the data, then one can be supplied.
     df = pd.read_csv(f"{file_path}{file_name}",names=colnames)
     print(df.shape) # displays (rows,cols)
 \end{pycode}
+
+
+\subsection{Reading CSV data from a URL}
+
+CSV data can be read into a pandas dataframe in the same way as from a file. To check if a server supports this, you should be able to visit the URL in a web browser and see the CSV structured text.
+
+\begin{pycode}
+    # Read CSV data from a URL
+    url =  "https://my.data.source.api/url_endpoint"
+    df = pd.read_csv(url)
+\end{pycode}
+
+The same optional parameters (e.g. \code{index_col}, \code{names}) that are used with files will also work with a valid URL.
+
+\subsection{Reading Excel data}
+
+The pandas library provides additional functions for reading other structured data, including the \code{read_excel()} function. This facilitates opening Microsoft Excel files as dataframes directly without converting them to CSV format. Files should be in the newer \code{.xlsx} format.
+
+\begin{pycode}
+    # Read an Excel file
+    file_path = "data/"
+    excel_file_name = "my_excel_data.xlsx"
+    df = pd.read_csv(f"{file_path}{excel_file_name}")
+\end{pycode}
+
+If the excel file has multiple sheets, the specific sheet to read in can be specified with the \code{sheet_name} parameter.
+
+\begin{pycode}
+    # Read an Excel file
+    file_path = "data/"
+    excel_file_name = "my_excel_data.xlsx"
+    sheet = "my_sheet"
+    sheet_df = pd.read_csv(f"{file_path}{excel_file_name}",sheet_name=sheet)
+\end{pycode}
+
+\newpage
+\section{Semi-structured data and JSON}
+
+\subsection{Reading plain text files into a string}
+
+Plain text files can be read directly into a variable. After doing so, the variable contents will be a \code{string} of characters that are the same as the text file (including invisible characters like spaces and end of line characters).
+
+\begin{pycode}
+    # Read in a plain text file
+    file_path = "data/"
+    file_name = "my_plain_text.txt"
+    with open(f"{file_path}{file_name}", 'r') as file:
+        text = file.read()
+
+    print(text)
+\end{pycode}
+
+\subsection{Reading plain text files into a list of strings}
+
+Sometimes data saved in a text file is written in a way that each \code{line} of the file corresponds to a \textit{record} in the data (e.g. CSV files, or log files). Typically an end of line character like a new line \code{\n} or a carriage return \code{\r} is used to denote the end of the line. Unix and MacOS systems tend to use \code{\n} while Microsoft systems often use both \code{\n\r}. 
+
+Python can recognise these line ending characters and read files line by line into a list. In this case, the \code{readlines()} function reads the file into a variable that is a \code{list} of \code{string} where each \code{string} is a line in the file.
+
+\begin{pycode}
+    # Read in a plain text file
+    file_path = "data/"
+    file_name = "my_plain_text.txt"
+    with open(f"{file_path}{file_name}", 'r') as file:
+        lines_list = file.readlines()
+
+    # Display the list
+    print(lines_list)
+
+    # Iterate over the list and print each line of the list
+    for line in lines_list:
+        print(line)
+\end{pycode}
+
+If both the full text and a list of lines is required, the data can be read using \code{read()} function, and then the string can be split on the end of line characters using the \code{split()} function.
+
+
+\begin{pycode}
+    # Read in a plain text file and split into list of lines
+    file_path = "data/"
+    file_name = "my_plain_text.txt"
+    with open(f"{file_path}{file_name}", 'r') as file:
+        full_text = file.read()
+
+    # Display the string (full_text)
+    print(full_text)
+
+    # Split the string into lines
+    lines_list = full_text.split('\n')  # <-- may need to be '\r\n'
+
+    # Dispaly the  list of strings
+    print(lines_list)
+
+\end{pycode}
+
+\subsection{Reading text files in JSON format into a dict}
+
+The \code{JSON} format is a common file format for \textit{semi-structured} data. The format is essentially a combination of \code{key:value} pairs and lists. The data is structured like:
+
+\begin{verbatim}
+    {"key1":"value1",
+     "key2_list": ["item1","item2","item3"],
+     "key4_num": 2023,
+     "key5":[45,54,63,72]}
+\end{verbatim}
+
+This structured can be represented in Python with a combination of \code{dict} and \code{list} types.
+
+A JSON file can be read into python by first reading the text into a \code{string} variable, and then converting the string into a python \code{dict} using the \code{loads()} function from the \code{json} library. The library needs to be imported first.
+
+\begin{pycode}
+    import json
+
+    # Read in a plain text file
+    file_path = "data/"
+    file_json = "my_json_file.json"
+    with open(f"{file_path}{file_json}", 'r') as file:
+        json_string = file.read()
+
+    # convert the json string
+    my_dict = json.loads(json_string)
+
+    # display the dict
+    print(my_dict)
+\end{pycode}
+
+If the original string is not required, the dict can be created within the \code{with open()} command.
+
+\begin{pycode}
+    # Read in a plain text file
+    file_path = "data/"
+    file_json = "my_json_file.json"
+    with open(f"{file_path}{file_json}", 'r') as file:
+        my_dict = json.loads(file)
+
+    # display the dict
+    print(my_dict)
+\end{pycode}
+
+TIP: See section \ref{chapter:analysing} for exemplars on how to access the data within a dict.
 
