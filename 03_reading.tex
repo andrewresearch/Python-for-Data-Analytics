@@ -73,7 +73,7 @@ The pandas library provides additional functions for reading other structured da
     # Read an Excel file
     file_path = "data/"
     excel_file_name = "my_excel_data.xlsx"
-    df = pd.read_csv(f"{file_path}{excel_file_name}")
+    df = pd.read_excel(f"{file_path}{excel_file_name}")
 \end{pycode}
 
 If the excel file has multiple sheets, the specific sheet to read in can be specified with the \code{sheet_name} parameter.
@@ -83,7 +83,7 @@ If the excel file has multiple sheets, the specific sheet to read in can be spec
     file_path = "data/"
     excel_file_name = "my_excel_data.xlsx"
     sheet = "my_sheet"
-    sheet_df = pd.read_csv(f"{file_path}{excel_file_name}",sheet_name=sheet)
+    sheet_df = pd.read_excel(f"{file_path}{excel_file_name}",sheet_name=sheet)
 \end{pycode}
 
 \newpage
@@ -98,14 +98,14 @@ Plain text files can be read directly into a variable. After doing so, the varia
     file_path = "data/"
     file_name = "my_plain_text.txt"
     with open(f"{file_path}{file_name}", 'r') as file:
-        text = file.read()
+    text = file.read()
 
     print(text)
 \end{pycode}
 
 \subsection{Reading plain text files into a list of strings}
 
-Sometimes data saved in a text file is written in a way that each \code{line} of the file corresponds to a \textit{record} in the data (e.g. CSV files, or log files). Typically an end of line character like a new line \code{\n} or a carriage return \code{\r} is used to denote the end of the line. Unix and MacOS systems tend to use \code{\n} while Microsoft systems often use both \code{\n\r}. 
+Sometimes data saved in a text file is written in a way that each \code{line} of the file corresponds to a \textit{record} in the data (e.g. CSV files, or log files). Typically an end of line character like a new line \code{\n} or a carriage return \code{\r} is used to denote the end of the line. Unix and MacOS systems tend to use \code{\n} while Microsoft systems often use both \code{\n\r}.
 
 Python can recognise these line ending characters and read files line by line into a list. In this case, the \code{readlines()} function reads the file into a variable that is a \code{list} of \code{string} where each \code{string} is a line in the file.
 
@@ -114,14 +114,14 @@ Python can recognise these line ending characters and read files line by line in
     file_path = "data/"
     file_name = "my_plain_text.txt"
     with open(f"{file_path}{file_name}", 'r') as file:
-        lines_list = file.readlines()
+    lines_list = file.readlines()
 
     # Display the list
     print(lines_list)
 
     # Iterate over the list and print each line of the list
     for line in lines_list:
-        print(line)
+    print(line)
 \end{pycode}
 
 If both the full text and a list of lines is required, the data can be read using \code{read()} function, and then the string can be split on the end of line characters using the \code{split()} function.
@@ -132,7 +132,7 @@ If both the full text and a list of lines is required, the data can be read usin
     file_path = "data/"
     file_name = "my_plain_text.txt"
     with open(f"{file_path}{file_name}", 'r') as file:
-        full_text = file.read()
+    full_text = file.read()
 
     # Display the string (full_text)
     print(full_text)
@@ -167,7 +167,7 @@ A JSON file can be read into python by first reading the text into a \code{strin
     file_path = "data/"
     file_json = "my_json_file.json"
     with open(f"{file_path}{file_json}", 'r') as file:
-        json_string = file.read()
+    json_string = file.read()
 
     # convert the json string
     my_dict = json.loads(json_string)
@@ -183,7 +183,7 @@ If the original string is not required, the dict can be created within the \code
     file_path = "data/"
     file_json = "my_json_file.json"
     with open(f"{file_path}{file_json}", 'r') as file:
-        my_dict = json.loads(file)
+    my_dict = json.loads(file)
 
     # display the dict
     print(my_dict)

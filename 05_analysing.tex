@@ -1,27 +1,126 @@
 \chapter{Analysing}
 \label{chapter:analysing}
 
-\section{Counting categorical data}
+\section{Accessing data in a dataframe}
 
 \begin{pycode}
     import pandas as pd
     data = {"pet":['dog','cat','cat','dog','dog','dog'],
-            "colour":["black","brown","black","brown","black","brown"],
-            "count":[3,1,4,2,1,2]}
+    "colour":["black","brown","black","brown","black","brown"],
+    "count":[3,1,4,2,1,2]}
     df = pd.DataFrame(data)
     df
 \end{pycode}
 
 \begin{tabular}{l l l l}
-     & pet  &  colour & count \\
+      & pet & colour & count \\
     \hline
-    0&	dog&	    black	 &   3\\
-    1&	cat&	    brown	 &   1\\
-    2&	cat&	    black	 &   4\\
-    3&	dog&	    brown	 &   2\\
-    4&	dog&	    black	 &   1\\
-    5&	dog&	    brown	  &  2\\
+    0 & dog & black  & 3     \\
+    1 & cat & brown  & 1     \\
+    2 & cat & black  & 4     \\
+    3 & dog & brown  & 2     \\
+    4 & dog & black  & 1     \\
+    5 & dog & brown  & 2     \\
 \end{tabular}
+
+Get the number of data rows in the dataframe:
+
+\begin{pycode}
+    df.index.size
+    # displays: 6
+\end{pycode}
+
+Get the number of data rows and columns (not including the index) as a tuple:
+
+\begin{pycode}
+    df.shape
+    # displays: (6,3)
+\end{pycode}
+
+Get the columns of a dataframe:
+
+\begin{pycode}
+    df.columns
+\end{pycode}
+
+Get the index of a dataframe:
+
+\begin{pycode}
+    df.index
+\end{pycode}
+
+Get a column of a dataframe as a \textit{Series}:
+
+\begin{pycode}
+    df['pet']
+\end{pycode}
+
+Get a row of a dataframe by its index:
+
+\begin{pycode}
+    df.loc[3]
+    # or if the index is a unique string or date
+    df.loc['unique_id']
+\end{pycode}
+
+Get a single value from a dataframe by its row, column label:
+
+\begin{pycode}
+    df.at[3,'pet']
+    # displays: 'dog'
+\end{pycode}
+
+\subsection{Filtering by value}
+
+String value contains:
+
+\begin{pycode}
+    df[df['pet'].str.contains('dog')]
+    # returns just rows where Pet column includes Dog
+\end{pycode}
+
+Multiple filters (note the or \code{|} operator joining each truth condition):
+
+\begin{pycode}
+    df[df['pet'].str.contains('dog') | df['pet'].str.contains('cat')]
+    # returns all rows where Pet column includes Dog OR Cat
+\end{pycode}
+
+Numerical comparisons that result in a boolean value:
+
+\begin{pycode}
+    df[df['count']<=2]
+    # returns all rows where Count column is less than or equal to 2
+\end{pycode}
+
+
+\section{Quantitative data}
+
+\subsection{Descriptive Statistics}
+
+Obtain summary descriptive statistics for a dataframe. This returns a dataframe  with only columns that have quantitative data, and the rows \code{count, mean, std, min, 25\%, 50\%, 75\%, max}:
+
+\begin{pycode}
+    df.describe()
+\end{pycode}
+
+Access a statistical value of describe for a selected column:
+
+\begin{pycode}
+    df['selected_column'].describe()['mean'] # displays the value of the mean for selected_column
+\end{pycode}
+
+\subsection{Correlation}
+
+Create a corrlation matrix between selected quantitative columns:
+
+\begin{pycode}
+    df['col1','col2','col3'].corr()
+    # displays a 3x3 matrix with index matching column headings
+    # containing correlation values
+\end{pycode}
+
+\section{Counting categorical data}
 
 Count the number of `dog' and `cat' entries in the `pet' column:
 
@@ -77,10 +176,10 @@ Get a total number of coloured pets and format as a dataframe:
 \end{pycode}
 
 \begin{tabular}{l l l}
-    &colour	&count \\
+      & colour & count \\
     \hline
-    0	&black	&8 \\
-    1	&brown	&5\\
+    0 & black  & 8     \\
+    1 & brown  & 5     \\
 \end{tabular}
 
 \section{Accessing data within a dicts and lists}
@@ -110,15 +209,15 @@ Data in a dict is accessed via its \code{key}. If the data above was loaded into
 \begin{pycode}
     # A dict variable called peirce for the peirce record
     peirce = {
-        "person_id": 1,
-        "name": "Charles Peirce",
-        "details": {
-            "occupation":"Philosopher",
-            "dates": {
-                "born": 1839
-                "died": 1914
-            }
-        }
+    "person_id": 1,
+    "name": "Charles Peirce",
+    "details": {
+    "occupation":"Philosopher",
+    "dates": {
+    "born": 1839
+    "died": 1914
+    }
+    }
     }
 
     # Get the person_id for peirce record
@@ -153,7 +252,7 @@ When the data includes a \code{list}, it may be necessary to \textit{iterate} ov
     pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
 
     for philosopher in pragmatists:
-        print("Pragmatist:",philosopher)
+    print("Pragmatist:",philosopher)
 
     # displays:
     # Pragmatist: Charles Sanders Peirce
@@ -168,7 +267,7 @@ When iterating over a loop, it is also possible to get the index of the item in 
     pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
 
     for idx,philosopher in enumerate(pragmatists):
-        print(f"Pragmatist {idx}:",philosopher)
+    print(f"Pragmatist {idx}:",philosopher)
 
     # displays:
     # Pragmatist 0: Charles Sanders Peirce
@@ -183,7 +282,7 @@ To access a specific value of a list, the \code{index} (position) of that value 
 \begin{pycode}
     pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
 
-    # Get james via index 
+    # Get james via index
     james = pragmatists[1]
 
     print(james) #displays: William James
@@ -199,8 +298,8 @@ Often, a combination of techniques will need to be used to access data:
 
     #Iterate over the list and get value via key
     for person in pragmatists:
-        person_name = person['name']
-        print(person_name)
+    person_name = person['name']
+    print(person_name)
 
     # Displays:
     # Charles
@@ -211,13 +310,13 @@ Often, a combination of techniques will need to be used to access data:
 \begin{pycode}
     # A dict with lists
     philosophers = {
-        "pragmatism":["Peirce","James","Dewey"],
-        "idealism":["Plato","Kant","Hegel"]
+    "pragmatism":["Peirce","James","Dewey"],
+    "idealism":["Plato","Kant","Hegel"]
     }
 
     # iterate over idealists
     for idealist in philosophers['idealism']:
-        print(idealist)
+    print(idealist)
 
     # displays
     # Plato
@@ -229,10 +328,10 @@ Often, a combination of techniques will need to be used to access data:
 \begin{pycode}
     # iterate over the whole structure
     for school in philosophers.keys():
-        print("Philosophical School:": school)
-        names = philosophers[school]
-        for name in names:
-            print("> Philosopher:",name)
+    print("Philosophical School:": school)
+    names = philosophers[school]
+    for name in names:
+    print("> Philosopher:",name)
 
     # Displays:
     # Philosophical School: pragmatism
@@ -244,3 +343,56 @@ Often, a combination of techniques will need to be used to access data:
     # > Philosopher: Kant
     # > Philosopher: Hegel
 \end{pycode}
+
+\section{Additional exemplars}
+
+\subsection{Modifying values}
+
+Round a float to a given level of precision:
+
+\begin{pycode}
+    pi = 3.1415926
+    round(pi,2) # displays 3.14
+\end{pycode}
+
+\subsection{Sets}
+
+Sets are like lists, but they are unordered and only have 1 of each item.
+
+To add an item:
+
+\begin{pycode}
+    set1 = {1,2}
+    set1.add(3)
+    set1 #displays: {1,2,3}
+\end{pycode}
+
+To remove an item:
+
+\begin{pycode}
+    set2 = {3,4,5,6}
+    set2.remove(6)
+    set2 # displays: {3,4,5}
+\end{pycode}
+
+The union of 2 sets:
+
+\begin{pycode}
+    set1.union(set2) #displays {1,2,3,4,5}
+\end{pycode}
+
+The intersection of 2 sets:
+
+\begin{pycode}
+    set1.intersection(set2) # displays: {3}
+\end{pycode}
+
+The difference between sets:
+
+\begin{pycode}
+    set2 - set1 #displays: {4,5}
+\end{pycode}
+
+
+
+

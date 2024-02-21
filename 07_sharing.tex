@@ -1,7 +1,7 @@
 \chapter{Sharing}
 \label{chapter:sharing}
 
-The most common approach to sharing data is to write it to a file. In many instances, writing data to a file is very similar to reading data from a file (see chapter \ref{chapter:reading}).
+The most common approach to sharing data is to write it to a file. In many instances, writing data to a file is very similar to reading data from a file (see chapter \ref{chapter:reading})...
 
 \section{Sharing structured data}
 
@@ -60,8 +60,8 @@ Options include specifying the sheet name as well as whether to write the index.
 
     # Start with a dict or list of dicts
     philosophers = {
-        "pragmatism":["Peirce","James","Dewey"],
-        "idealism":["Plato","Kant","Hegel"]
+    "pragmatism":["Peirce","James","Dewey"],
+    "idealism":["Plato","Kant","Hegel"]
     }
 
     # dump the dict to a json string
@@ -72,6 +72,6 @@ Options include specifying the sheet name as well as whether to write the index.
     file_name = "philosophers.json"
 
     with open(f"{file_path}{file_name}",'w') as fp:
-        fp.write(json_string)
+    fp.write(json_string)
 
 \end{pycode}
