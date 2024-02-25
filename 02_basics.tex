@@ -5,7 +5,7 @@
 
 Data analytics involves 2 kinds of thinking: thinking like an analyst, and thinking like a programmer. These involve very different thought processes, and if you are aware of them it can make it easier to solve programming problems while addressing larger analytical questions.
 
-When thinking like an analyst, questions based in the context are common. For example:
+When thinking like an analyst, questions based on the context are common. For example:
 
 \begin{itemize}
     \item What is the main concern of the organisation that this analysis will address?
@@ -18,17 +18,17 @@ The kinds of questions are high level and inform decisions about what kind of da
 In contrast, when thinking like a programmer, questions about the code itself are more important. For example:
 \begin{itemize}
     \item Which is the best structure for this data?
-    \item What function is best to manimpulate this data to achieve the required result?
+    \item What function is best to manipulate this data to achieve the required result?
     \item What syntax is required for this section of code?
     \item How can I break this task into smaller steps?
 \end{itemize}
 
-It is this last question in particular that newcommers find challenging. There is often an expectation to obtain a result by undertaking a simple action. But programming always involves taking tasks and breaking them up into small steps, ensuring that each step achieves the expected result.
-How small you have to break down the task usually depends on the degree to which others have simplified the task previously -- and already written code to do the job. Although almost all data analytics with Python makes use of code written by others (to simplify the analysis task), there will always be a need to think programmatically about the code. (Or at least until AI is writing high qualility code for us).
+It is this last question in particular that newcomers find challenging. There is often an expectation to obtain a result by undertaking a simple action. But programming always involves taking tasks and breaking them up into small steps, ensuring that each step achieves the expected result.
+How small you have to break down the task usually depends on the degree to which others have simplified the task previously -- and already written code to do the job. Although almost all data analytics with Python makes use of code written by others (to simplify the analysis task), there will always be a need to think programmatically about the code. (Or at least until AI is writing high quality code for us).
 
 \section{How to write}
 
-If the writing in this section didn't require any order to the words, it is likely that you wouldn't understand it. We understand a language through a knowledge of the words (the vocabulary), as well as rules for how those words are put together (syntax). The same applies for programming langauges. There are certain concepts that are common across many languages (e.g. variables, loops, conditionals, data structures), but the vocabulary and the syntax tends to be language specific. It is critical to gain an understanding of both the terms important to the language \textit{AND} the syntax required to use those terms.
+If the writing in this section didn't require any order to the words, it is likely that you wouldn't understand it. We understand a language through a knowledge of the words (the vocabulary), as well as rules for how those words are put together (syntax). The same applies to programming languages. There are certain concepts that are common across many languages (e.g. variables, loops, conditionals, data structures), but the vocabulary and the syntax tend to be language specific. It is critical to gain an understanding of both the terms important to the language \textit{AND} the syntax required to use those terms.
 
 In general, programming languages have very specific requirements, and python is no exception. In the following example, only the first line of code will display \textbf{Hello!} in the output. The other 2 examples will result in errors. This is because only the first line is the \textit{correct} syntax. Note that the words following the hash symbol (\#) are comments and don't impact the running of the code in any way.
 
@@ -38,11 +38,11 @@ In general, programming languages have very specific requirements, and python is
     print(Hello!) # won't work - will produce an error
 \end{pycode}
 
-However, you might find that some things in the language don't matter. For example, with Python it really doesn't matter if you use single quotes or double quotes for a string.
+However, you might find that some things in the language don't matter. For example, with Python, it really doesn't matter if you use single quotes or double quotes for a string.
 
 \subsection{Nesting and indenting}
 
-One very important syntactic feature of python, is the use of indents in the code to tell the computer which lines of code are \textit{nested} inside an incapsulating element.
+One very important syntactic feature of python is the use of indents in the code to tell the computer which lines of code are \textit{nested} inside an encapsulating element.
 
 \begin{pycode}
     def my_function():
@@ -60,7 +60,7 @@ One very important syntactic feature of python, is the use of indents in the cod
 
 \section{Common concepts}
 
-Writing code involves some commen concepts no matter which language you are using. Understanding these concepts will help you grasp the language faster, and it will also help you know what to search for if you are looking for help online.
+Writing code involves some common concepts no matter which language you are using. Understanding these concepts will help you grasp the language faster, and it will also help you know what to search for if you are looking for help online.
 
 \subsection{Variables and assignment}
 
@@ -68,12 +68,12 @@ Writing code involves some commen concepts no matter which language you are usin
 
 \begin{pycode}
     first_name = "Charles"
-    last_name = "Peirce"
+    last_name = "Pierce"
     full_name = first_name + " " + last_name # use the variables and assign to new variable
-    print(full_name) # displays  Charles Peirce
+    print(full_name) # displays  Charles Pierce
 \end{pycode}
 
-When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Peirce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full_name} was passed to the function \code{print()}.
+When the string is \textit{assigned} to the variable name, the name is \textit{defined} as a string type (\code{str}), and the data (e.g. "Charles", "Pierce") is assigned to that name. When a variable is \textit{refered} to by its name (like in the \code{print()} function), the computer substitutes the data assigned to the variable name instead of the name itself. It is common to use language like \textit{passing} a variable to a function. In the example above, \code{full_name} was passed to the function \code{print()}.
 
 \subsection{Functions}
 
@@ -85,13 +85,13 @@ A \textbf{function} is simply a group of lines of code that accept data as input
         return fullname
 \end{pycode}
 
-This function is \textit{called} by its name and \textit{passing} the required parameters between the parenthesis. For example, \code{make_full_name("Charles","Peirce")} would result in \code{"Charles Peirce"}.
+This function is \textit{called} by its name and \textit{passing} the required parameters between the parenthesis. For example, \code{make_full_name("Charles","Pierce")} would result in \code{"Charles Pierce"}.
 
 \section{A little more advanced\ldots}
 
 \subsection{Classes with properties and methods}
 
-While functions can be created and called standalone, they can also be included in \textbf{classes}. Without going into technical details, an class can have properties and methods where the methods are functions that usually operate on properties. When classes are \textit{instantiated} we call the instance an \textbf{object}. For example, the \textit{object} \code{soccer_ball} could be an \textit{instance} of the \textit{class} \code{ball}. Using our names example above, if we had a \code{Person} class, it may have a \code{first_name} property, a \code{last_name} property, and a \code{full_name()} method. We could create :
+While functions can be created and called standalone, they can also be included in \textbf{classes}. Without going into technical details, a class can have properties and methods where the methods are functions that usually operate on properties. When classes are \textit{instantiated} we call the instance an \textbf{object}. For example, the \textit{object} \code{soccer_ball} could be an \textit{instance} of the \textit{class} \code{ball}. Using our names example above, if we had a \code{Person} class, it may have a \code{first_name} property, a \code{last_name} property, and a \code{full_name()} method. We could create :
 
 \begin{pycode}
     # Define a class Person with properties first_name and last_name
@@ -111,7 +111,7 @@ While functions can be created and called standalone, they can also be included 
     print(cp.full_name()) # displays: Charles Peirce
 \end{pycode}
 
-In data analytics there is rarely a need to create custom classes. However, it is usefull to know that you may be creating and using objects and their methods. For example:
+In data analytics, there is rarely a need to create custom classes. However, it is useful to know that you may be creating and using objects and their methods. For example:
 
 \begin{pycode}
     # Create a string object
@@ -124,9 +124,9 @@ In data analytics there is rarely a need to create custom classes. However, it i
 
 \subsection{Libraries or Packages}
 
-Repeated code (objects and functions) that are related can be grouped together into a reuseable bundle called a \textbf{Library} or \textbf{Package}. This helps minimise duplication.
+Repeated code (objects and functions) that are related can be grouped together into a reusable bundle called a \textbf{Library} or \textbf{Package}. This helps minimise duplication.
 
-In data analytics it is very common to use \textit{libraries} written by other programmers. Once libraries are installed, they can be \textit{imported} into the current Python file and used by the code in that file. Libraries can be imported and used directly, imported as an alias, or components of a library can be imported. For example:
+In data analytics, it is very common to use \textit{libraries} written by other programmers. Once libraries are installed, they can be \textit{imported} into the current Python file and used by the code in that file. Libraries can be imported and used directly, imported as an alias, or components of a library can be imported. For example:
 
 \begin{pycode}
     # Import the mathematics library
@@ -140,7 +140,7 @@ In data analytics it is very common to use \textit{libraries} written by other p
     print(sqrt(100)) # displays 10
 
     # Import a library as an alias
-    import Pandas as pd
+    import pandas as pd
     # Create a DataFrame object and assign to variable df
     df = pd.DataFrame()
 \end{pycode}

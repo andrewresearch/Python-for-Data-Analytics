@@ -3,7 +3,7 @@
 
 \section{Structured data and dataframes}
 
-When working with structed data, one of the most common file types is the *CSV* (comma separated value) file. CSV files are plain text files that are structured such that every line of the file represents a row of data, and every column in the data is separated by a comma. Thus the data is structured like:
+When working with structured data, one of the most common file types is the *CSV* (comma separated value) file. CSV files are plain text files that are structured such that every line of the file represents a row of data, and every column in the data is separated by a comma. Thus the data is structured like:
 
 \begin{verbatim}
     col1,col2,col3\n
@@ -18,7 +18,7 @@ Each of the following examples requires the library, so the following \code{impo
     import pandas as pd
 \end{pycode}
 
-The simplest \code{pandas.read_csv()} function assumes a header row and no index. After reading a CSV into a dataframe, it is a good idea to check that the shape (rows x colums) of the original  file is reflected in the shape of the dataframe. The \code{shape} property of the dataframe will output a tuple of the total number of rows and columns (rows, cols).
+The simplest \code{pandas.read_csv()} function assumes a header row and no index. After reading a CSV into a dataframe, it is a good idea to check that the shape (rows x columns) of the original  file is reflected in the shape of the dataframe. The \code{shape} property of the dataframe will output a tuple of the total number of rows and columns (rows, cols).
 
 \begin{pycode}
     # Read a CSV into a dataframe
@@ -28,7 +28,7 @@ The simplest \code{pandas.read_csv()} function assumes a header row and no index
     print(df.shape) # displays (rows,cols)
 \end{pycode}
 
-If the first column of the data can be used as an index (each row is unique value), then the column name (or number) can be passed.
+If the first column of the data can be used as an index (each row is a unique value), then the column name (or number) can be passed.
 
 \begin{pycode}
     # Read a CSV into a dataframe with an index on idx
@@ -42,7 +42,7 @@ If the first column of the data can be used as an index (each row is unique valu
 If there is no header row in the data, then one can be supplied.
 
 \begin{pycode}
-    # Read a CSV without header into a dataframe and supply column names
+    # Read a CSV without a header into a dataframe and supply column names
     file_path = "data/"
     file_name = "my_data.csv"
     colnames = ['col1','col2','col3']

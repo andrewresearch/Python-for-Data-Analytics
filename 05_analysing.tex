@@ -69,7 +69,7 @@ Get totals based on categories and subcategories:
         brown       4
 \end{verbatim}
 
-Get a total number of coloured pets and format as a dataframe:
+Get a total number of coloured pets and format them as a dataframe:
 
 \begin{pycode}
     new_df = df.groupby(['colour'])['count'].sum().reset_index(name="count")
