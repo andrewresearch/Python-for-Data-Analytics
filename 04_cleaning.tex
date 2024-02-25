@@ -1,13 +1,13 @@
 \chapter{Cleaning}
 \label{chapter:cleaning}
 
-Data are rarely without problems. Aspects of the data can be missing, or incomplete, or even false. Data analytics can involve a significant amount of time dealing with inconsistencies and anomolies in the original data prior to starting the main analysis. This process of transforming \textit{dirty} data into something useable is known as \textbf{cleaning}. The following examples show some common code that is useful in the cleaning process.
+Data are rarely without problems. Aspects of the data can be missing, or incomplete, or even false. Data analytics can involve a significant amount of time dealing with inconsistencies and anomalies in the original data prior to starting the main analysis. This process of transforming \textit{dirty} data into something usable is known as \textbf{cleaning}. The following examples show some common code that is useful in the cleaning process.
 
 \section{Not a Number (NaN)}
 
 When a dataframe expects a value to be present, but it is missing (\textit{null}), a \code{NaN} fills the cell in the place of the expected value. A helpful cleaning process is to identify which columns include NaNs and replace them with a meaningful value.
 
-\textbf{Important:} a meaningful replacement value is dependent on the meaning of the data in the column. For example, if a column includes measured temperatures from a sensor, a \code{NaN} may mean that the sensor is offline. In this case replacing the value with a \code{0} would impact the truth of the data (unless the temperature was actually 0 at the time).
+\textbf{Important:} a meaningful replacement value is dependent on the meaning of the data in the column. For example, if a column includes measured temperatures from a sensor, a \code{NaN} may mean that the sensor is offline. In this case, replacing the value with a \code{0} would impact the truth of the data (unless the temperature was actually 0 at the time).
 
 To see the number of NaNs in each column in the dataframe the \code{isna()} function can be used together with \code{sum()}.
 
@@ -28,7 +28,7 @@ To replace all NaNs in a particular column with a given value, use \code{fillna(
 The same code will work for replacing multiple columns. However, take care that the replacement data means the same thing for each of the columns.
 
 \begin{pycode}
-    # replace NaNs in multiple columns with string 'N/A'
+    # replace NaNs in multiple columns with the string 'N/A'
     columns = ['col1','col5']
     replace_value = 'N/A'
     df[columns] = df[columns].fillna(replace_value)
@@ -38,15 +38,15 @@ The same code will work for replacing multiple columns. However, take care that 
 
 \section{Whitespace}
 
-Sometime cells look empty, but they actually contain invisible characters (like a space: \code{' '}). To see whether a column includes \textit{whitespace}, turn the column into a list and print the list. Note, this may not be a good idea if you have a lot of rows in your dataframe!
+Sometimes cells look empty, but they actually contain invisible characters (like a space: \code{' '}). To see whether a column includes \textit{whitespace}, turn the column into a list and print the list. Note, this may not be a good idea if you have a lot of rows in your dataframe!
 
 \begin{pycode}
-    # column as list
+    # column as a list
     column_name = 'col1'
     print(list(df[column_name]))
 \end{pycode}
 
-To replace all whitespace, use the \code{replace()} function of the dataframe. By using \textbf{Regex} (regular expressions), it is possible replace empty strings as well as strings with whitespace characters. The regex pattern is \code{r'^\s*$'} and it requires that the python regex library has been imported.
+To replace all whitespace, use the \code{replace()} function of the dataframe. By using \textbf{Regex} (regular expressions), it is possible to replace empty strings as well as strings with whitespace characters. The regex pattern is \code{r'^\s*$'} and it requires that the python regex library has been imported.
 
 \begin{pycode}
     # import the regex library
