@@ -209,15 +209,15 @@ Data in a dict is accessed via its \code{key}. If the data above was loaded into
 \begin{pycode}
     # A dict variable called peirce for the peirce record
     peirce = {
-    "person_id": 1,
-    "name": "Charles Peirce",
-    "details": {
-    "occupation":"Philosopher",
-    "dates": {
-    "born": 1839
-    "died": 1914
-    }
-    }
+        "person_id": 1,
+        "name": "Charles Peirce",
+        "details": {
+            "occupation":"Philosopher",
+            "dates": {
+                "born": 1839
+                "died": 1914
+            }
+        }
     }
 
     # Get the person_id for peirce record
@@ -252,7 +252,7 @@ When the data includes a \code{list}, it may be necessary to \textit{iterate} ov
     pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
 
     for philosopher in pragmatists:
-    print("Pragmatist:",philosopher)
+        print("Pragmatist:",philosopher)
 
     # displays:
     # Pragmatist: Charles Sanders Peirce
@@ -267,7 +267,7 @@ When iterating over a loop, it is also possible to get the index of the item in 
     pragmatists = ["Charles Sanders Peirce","William James","John Dewey"]
 
     for idx,philosopher in enumerate(pragmatists):
-    print(f"Pragmatist {idx}:",philosopher)
+        print(f"Pragmatist {idx}:",philosopher)
 
     # displays:
     # Pragmatist 0: Charles Sanders Peirce
@@ -298,8 +298,8 @@ Often, a combination of techniques will need to be used to access data:
 
     #Iterate over the list and get value via key
     for person in pragmatists:
-    person_name = person['name']
-    print(person_name)
+        person_name = person['name']
+        print(person_name)
 
     # Displays:
     # Charles
@@ -310,13 +310,13 @@ Often, a combination of techniques will need to be used to access data:
 \begin{pycode}
     # A dict with lists
     philosophers = {
-    "pragmatism":["Peirce","James","Dewey"],
-    "idealism":["Plato","Kant","Hegel"]
+        "pragmatism":["Peirce","James","Dewey"],
+        "idealism":["Plato","Kant","Hegel"]
     }
 
     # iterate over idealists
     for idealist in philosophers['idealism']:
-    print(idealist)
+        print(idealist)
 
     # displays
     # Plato
@@ -328,10 +328,10 @@ Often, a combination of techniques will need to be used to access data:
 \begin{pycode}
     # iterate over the whole structure
     for school in philosophers.keys():
-    print("Philosophical School:": school)
-    names = philosophers[school]
-    for name in names:
-    print("> Philosopher:",name)
+        print("Philosophical School:": school)
+        names = philosophers[school]
+        for name in names:
+            print("> Philosopher:",name)
 
     # Displays:
     # Philosophical School: pragmatism

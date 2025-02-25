@@ -115,6 +115,6 @@ Specify number of bins, add a boxplot, and label the counts:
 Show multiple columns as a stacked histogram with color set by categorical data:
 
 \begin{pycode}
-    ig = px.histogram(df[['col1','col2']],nbins=5,marginal="box",text_auto=True,color="categorical_column")
+    fig = px.histogram(df[['col1','col2']],nbins=5,marginal="box",text_auto=True,color="categorical_column")
     fig.show()
 \end{pycode}

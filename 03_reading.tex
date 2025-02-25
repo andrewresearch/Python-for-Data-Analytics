@@ -98,7 +98,7 @@ Plain text files can be read directly into a variable. After doing so, the varia
     file_path = "data/"
     file_name = "my_plain_text.txt"
     with open(f"{file_path}{file_name}", 'r') as file:
-    text = file.read()
+        text = file.read()
 
     print(text)
 \end{pycode}
@@ -114,14 +114,14 @@ Python can recognise these line ending characters and read files line by line in
     file_path = "data/"
     file_name = "my_plain_text.txt"
     with open(f"{file_path}{file_name}", 'r') as file:
-    lines_list = file.readlines()
+        lines_list = file.readlines()
 
     # Display the list
     print(lines_list)
 
     # Iterate over the list and print each line of the list
     for line in lines_list:
-    print(line)
+        print(line)
 \end{pycode}
 
 If both the full text and a list of lines is required, the data can be read using \code{read()} function, and then the string can be split on the end of line characters using the \code{split()} function.
@@ -132,7 +132,7 @@ If both the full text and a list of lines is required, the data can be read usin
     file_path = "data/"
     file_name = "my_plain_text.txt"
     with open(f"{file_path}{file_name}", 'r') as file:
-    full_text = file.read()
+        full_text = file.read()
 
     # Display the string (full_text)
     print(full_text)
@@ -167,7 +167,7 @@ A JSON file can be read into python by first reading the text into a \code{strin
     file_path = "data/"
     file_json = "my_json_file.json"
     with open(f"{file_path}{file_json}", 'r') as file:
-    json_string = file.read()
+        json_string = file.read()
 
     # convert the json string
     my_dict = json.loads(json_string)
@@ -183,11 +183,32 @@ If the original string is not required, the dict can be created within the \code
     file_path = "data/"
     file_json = "my_json_file.json"
     with open(f"{file_path}{file_json}", 'r') as file:
-    my_dict = json.loads(file)
+        my_dict = json.loads(file)
 
     # display the dict
     print(my_dict)
 \end{pycode}
 
 TIP: See section \ref{chapter:analysing} for exemplars on how to access the data within a dict.
+
+\section{Other factors when reading files}
+
+\subsection{Reading alternative encodings}
+
+When reading data from a text file (e.g. CSV), at times the file may be encoded differently than the `utf-8' encoding that Python expects. In these cases, an alternative coding will need to be specified.
+
+Common alternative encodings include \texttt{iso-8859-1}, and an extension to this standard by Microsoft: \texttt{cp1252}.
+
+\begin{pycode}
+    # Read a CSV into a dataframe with alternative encoding
+    file_path = "data/"
+    file_name = "my_data.csv"
+    df = pd.read_csv(f"{file_path}{file_name}", encoding='cp1252')
+
+    # Read a text file as JSON with alternative encoding
+    with open(f"{file_path}{file_json}", 'r', encoding='iso-8859-1') as file:
+        my_dict = json.loads(file)
+
+
+\end{pycode}
 
