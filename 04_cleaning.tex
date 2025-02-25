@@ -56,3 +56,38 @@ To replace all whitespace, use the \code{replace()} function of the dataframe. B
     replace_value = '_empty_'
     df[column_name] = df[column_name].replace(r'^\s*$', replace_value, regex=True)
 \end{pycode}
+
+
+\section{Converting Types}
+
+Sometimes data appears correct, but it is actually stored incorrectly in the dataframe. For example, a numeric value stored as a string or a date stored as a string. In these cases, it is necessary to convert the column to the correct type.
+
+To identify the types of the columns in a dataframe, call the \code{dtypes} property.
+
+\begin{pycode}
+    df.dtypes
+\end{pycode}
+
+
+\subsection{Converting strings to datetime}
+
+\begin{pycode}
+    # If a date is a string in the format 31-12-2020, use %d-%m-%Y as the formatter
+    df["Date"] = pd.to_datetime(df["Date"], format=%d-%m-%Y)
+\end{pycode}
+
+A list of date string formatters can be found here: \url{https://pandas.pydata.org/docs/reference/api/pandas.Period.strftime.html}.
+
+\subsection{Converting strings to numeric}
+
+\begin{pycode}
+    # Replace a specific non-numeric character like a comma
+    df["Converted"] = pd.to_numeric(df['str_number'].str.replace(',', ''))
+
+    # Using regex, we can replace all non-numeric characters and import the column as numeric
+    import re
+    df["Converted"] = pd.to_numeric(df['str_number'].str.replace('[^0-9.]', '',regex=True))
+
+    # If the only non-numeric character is a thousands separator, we can deal with it on import
+    df = pd.read_csv("my_file.csv",thousands=",")
+\end{pycode}

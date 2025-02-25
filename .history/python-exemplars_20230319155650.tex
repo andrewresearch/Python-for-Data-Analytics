@@ -1,6 +1,4 @@
-% !TeX root = python-exemplars.tex
 %!TEX program = xelatex
-
 \documentclass{layout/qut-report}
 
 %% Setting up the bibliography
@@ -18,7 +16,7 @@
 %\addbibresource{report.bib}
 
 %% Additional packages
-\usepackage{todonotes} 
+\usepackage{todonotes}
 \newcommand{\idea}[1]{\todo[inline,backgroundcolor=green!10,bordercolor=gray]{\textbf{AG: }#1}}
 \newcommand{\fix}[1]{\todo[inline,backgroundcolor=yellow!95,bordercolor=gray]{\textbf{FIX: }#1}}
 
@@ -26,20 +24,6 @@
 %\input{minted.tex}
 \usepackage[outputdir=./output]{minted} % Display code - use 'listings' offline without shell escape
 %\usepackage[none]{hyphenat} % Disables word breaking
-
-\usepackage{xpatch}
-\makeatletter
-% replace executable python with python3
-\xpatchcmd\minted@pygmentize
-  {python -c}
-  {python3 -c}
-  {}{\fail}
-\xpatchcmd\minted@autogobble
-  {python -c}
-  {python3 -c}
-  {}{\fail}
-\makeatother
-
 \setminted[python]{
   python3=true,
   autogobble=true,
